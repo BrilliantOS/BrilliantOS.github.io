@@ -1,8 +1,11 @@
 [
   {
+    "id": 1,
     "name": "Placeholder",
     "author": "Author name",
     "content": "Content",
+    "image": "https://via.placeholder.com/400x200",
+    "imageNsfw": false,
     "pinned": true,
     "nsfw": false,
     "tag": "Tag1",
