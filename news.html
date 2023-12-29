@@ -127,7 +127,7 @@
 
             newsItems.forEach(item => {
                 const authorname = item.textContent.toLowerCase();
-                if (!tags.includes(authorInput)) {
+                if (!authorname.includes(authorInput)) {
                     item.classList.add('hidden-news');
                 } else {
                     item.classList.remove('hidden-news');
