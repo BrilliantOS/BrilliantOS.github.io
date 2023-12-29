@@ -47,24 +47,27 @@
             .then(response => response.json())
             .then(data => {
                 const generateNewsHTML = (newsItem) => {
-                    const { name, author, content, pinned, nsfw, tag, tag2, hidden, edited, relatedlink1, relatedlink1html, relatedlink2, relatedlink2html, showtags, showrelatedlinks, additionalTagStyling } = newsItem;
+                    const { id, name, author, content, image, imageNsfw, pinned, nsfw, tag, tag2, hidden, edited, relatedlink1, relatedlink1html, relatedlink2, relatedlink2html, showtags, showrelatedlinks, additionalTagStyling } = newsItem;
                     const nsfwClass = nsfw ? 'nsfw-blur' : '';
                     const hiddenClass = hidden ? 'hidden-news' : '';
                     const editedText = edited ? '<span class="edited-text">(edited)</span>' : '';
 
                     return `
                         <div class="news-item ${pinned ? 'pinned' : ''} ${hiddenClass}">
-                            <h2>${name}</h2>
-                            <p>Author: ${author} ${editedText}</p>
-                            <p class="${nsfwClass}">${content}</p>
-                            <p>Tags: ${tag}, ${tag2}</p>
+                    <h2>${name}</h2>
+                    <p>ID: ${id}</p>
+                    <p>Author: ${author}${edited ? '<span class="edited-text">(edited)</span>' : ''}</p>
+                    ${tagsHTML}
+                    ${relatedLinksHTML}
+                    ${newsImage}
+                    <p class="${nsfw ? 'nsfw-blur' : ''}">${content}</p>
                         </div>
                     `;
                 };
 
                 const newsContainer = document.getElementById('news-container');
         data.forEach(newsItem => {
-            const { name, author, content, pinned, nsfw, tag, tag2, hidden, edited, relatedlink1, relatedlink1html, relatedlink2, relatedlink2html, showtags, showrelatedlinks, additionalTagStyling } = newsItem;
+            const { id, name, author, content, image, imageNsfw, pinned, nsfw, tag, tag2, hidden, edited, relatedlink1, relatedlink1html, relatedlink2, relatedlink2html, showtags, showrelatedlinks, additionalTagStyling } = newsItem;
             
             // Check for showing tags
             const tagsHTML = showtags ? `<p>${tag}, ${tag2}</p>` : '';
@@ -80,12 +83,16 @@
             // Check for additional tag styling
             const additionalTagStyle = additionalTagStyling ? 'style="border-radius: 5px; background-color: #336699; color: #fff; padding: 3px;"' : '';
 
+            const newsImage = image ? `<img src="${image}"${imageNsfw ? ' class="nsfw-blur"' : ''} alt="News Image">` : '';
+
             const newsHTML = `
                 <div class="news-item ${pinned ? 'pinned' : ''} ${hidden ? 'hidden-news' : ''}">
                     <h2>${name}</h2>
+                    <p>ID: ${id}</p>
                     <p>Author: ${author}${edited ? '<span class="edited-text">(edited)</span>' : ''}</p>
                     ${tagsHTML}
                     ${relatedLinksHTML}
+                    ${newsImage}
                     <p class="${nsfw ? 'nsfw-blur' : ''}">${content}</p>
                 </div>
             `;
