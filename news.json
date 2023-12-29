@@ -8,6 +8,13 @@
     "tag": "Tag1",
     "tag2": "Tag2",
     "hidden": false,
-    "edited": false
+    "edited": false,
+    "relatedlink1": "Related Site 1",
+    "relatedlink1html": "https://example.com/link1",
+    "relatedlink2": "Related Site 2",
+    "relatedlink2html": "https://example.com/link2",
+    "showtags": true,
+    "showrelatedlinks": false,
+    "additionalTagStyling": true
   }
 ]
