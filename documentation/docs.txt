@@ -1,6 +1,6 @@
 hello.
 
-  DOCUMENTATION FOR NEWS.JSON:
+DOCUMENTATION FOR NEWS.JSON:
 id = the id of the post or news, aka 1, 2, 3 and so on.
 name = name of the news
 author = author or news writer name
@@ -14,6 +14,14 @@ hidden = hide this without removing it
 edited = adds a little (edited) text near the authors name
 relatedlink1 2 = name of related link
 relatedlink1html and 2 = html of related link
-showtags = show tags or not
+showtags = shows tags or not
 showrelatedlinks = same as show tags but for related links
 additionalTagStyling = toggles some cool additional stuff!!
+
+DOCUMENTATION FOR FUNFACTS.JSON:
+funfactname = the name of the fun fact
+funfactnumber = id but for fun facts
+jokefunfact = editted but it instead says joke
+tag1 tag2 and tag3 = tags
+showTags = shows tags or not
+content = the actual fun fact content.
