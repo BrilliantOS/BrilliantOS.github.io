@@ -1,0 +1,19 @@
+hello.
+
+  DOCUMENTATION FOR NEWS.JSON:
+id = the id of the post or news, aka 1, 2, 3 and so on.
+name = name of the news
+author = author or news writer name
+content = the actual content of it
+image = image if chosen
+imageNSFW = toggle NSFW for image
+pinned = brings it to the top of everything else
+nsfw = nsfw spoiler
+tag1 and tag2 = tags
+hidden = hide this without removing it
+edited = adds a little (edited) text near the authors name
+relatedlink1 2 = name of related link
+relatedlink1html and 2 = html of related link
+showtags = show tags or not
+showrelatedlinks = same as show tags but for related links
+additionalTagStyling = toggles some cool additional stuff!!
