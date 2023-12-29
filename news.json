@@ -1,0 +1,11 @@
+[
+  {
+    "name": "Placeholder",
+    "author": "Author name",
+    "content": "Content",
+    "pinned": true,
+    "nsfw": false,
+    "tag": "Tag1",
+    "tag2": "Tag2"
+  }
+]
