@@ -31,6 +31,11 @@
         <button onclick="searchByTag()">Search</button>
     </div>
     <div>
+        <label for="tagSearch">Search by Author:</label>
+        <input type="text" id="authorSearch" placeholder="Enter author name">
+        <button onclick="searchByAuthor()">Search</button>
+    </div>
+    <div>
         <label for="nsfwSearch">Search by NSFW:</label>
         <select id="nsfwSearch">
             <option value="all">All</option>
@@ -109,6 +114,20 @@
             newsItems.forEach(item => {
                 const tags = item.textContent.toLowerCase();
                 if (!tags.includes(tagInput)) {
+                    item.classList.add('hidden-news');
+                } else {
+                    item.classList.remove('hidden-news');
+                }
+            });
+        }
+
+        function searchByAuthor() {
+            const authorInput = document.getElementById('authorSearch').value.toLowerCase();
+            const newsItems = document.querySelectorAll('.news-item');
+
+            newsItems.forEach(item => {
+                const authorname = item.textContent.toLowerCase();
+                if (!tags.includes(authorInput)) {
                     item.classList.add('hidden-news');
                 } else {
                     item.classList.remove('hidden-news');
