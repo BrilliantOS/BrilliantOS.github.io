@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Placeholder",
+    "author": "Author name",
+    "content": "Content",
+    "image": "https://via.placeholder.com/400x200",
+    "imageNsfw": false,
+    "pinned": true,
+    "nsfw": false,
+    "tag": "Tag1",
+    "tag2": "Tag2",
+    "hidden": false,
+    "edited": false,
+    "relatedlink1": "Related Site 1",
+    "relatedlink1html": "https://example.com/link1",
+    "relatedlink2": "Related Site 2",
+    "relatedlink2html": "https://example.com/link2",
+    "showtags": true,
+    "showrelatedlinks": false,
+    "additionalTagStyling": true
+  }
+]
