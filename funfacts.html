@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🅱rilliantOS Fun Facts</title>
+    <style>
+        body {
+            height: 100vh; /* Full viewport height */
+            background-image: url('imgs/gradient.png'); /* URL to your background image */
+            background-size: cover; /* Cover the entire background */
+            background-repeat: no-repeat; /* No image repetition */
+        }
+        .nsfw-blur {
+            filter: blur(5px);
+            transition: filter 0.3s ease;
+            cursor: pointer;
+        }
+        .nsfw-blur:hover {
+            filter: none;
+        }
+        .hidden-fact {
+            display: none;
+        }
+        .jokeText {
+            font-style: italic;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the 🅱rilliantOS Fun Facts Page!</h1>
+
+    <div id="fun-facts-container"></div>
+
+    <script>
+        fetch('funfacts.json')
+            .then(response => response.json())
+            .then(data => {
+                const funFactsContainer = document.getElementById('fun-facts-container');
+                data.forEach(fact => {
+                    const { funfactname, funfactnumber, jokefunfact, tag1, tag2, tag3, showTags, content } = fact;
+
+                    const tagsHTML = showTags ? `<p>${tag1}, ${tag2}, ${tag3}</p>` : '';
+
+                    const jokeText = jokefunfact ? '(joke)' : '';
+
+                    const factHTML = `
+                        <div class="fun-fact">
+                            <h2>${funfactname} ${jokeText}</h2>
+                            <p>Fact Number: ${funfactnumber}</p>
+                            ${tagsHTML}
+                            <p>${content}</p>
+                        </div>
+                    `;
+
+                    funFactsContainer.innerHTML += factHTML;
+                });
+            })
+            .catch(error => console.error('Error fetching fun facts:', error));
+    </script>
+</body>
+</html>
