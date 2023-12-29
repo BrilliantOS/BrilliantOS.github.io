@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🅱rilliantOS News</title>
+    <!-- Styles for NSFW blur effect and hidden news -->
+    <style>
+        .nsfw-blur {
+            filter: blur(5px);
+            transition: filter 0.3s ease;
+            cursor: pointer;
+        }
+        .nsfw-blur:hover {
+            filter: none;
+        }
+        .hidden-news {
+            display: none;
+        }
+        .edited-text {
+            font-style: italic;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the 🅱rilliantOS News Page!</h1>
+
+    <div id="news-container"></div>
+
+    <script>
+        fetch('news.json')
+            .then(response => response.json())
+            .then(data => {
+                const generateNewsHTML = (newsItem) => {
+                    const { name, author, content, pinned, nsfw, tag, tag2, hidden, edited } = newsItem;
+                    const nsfwClass = nsfw ? 'nsfw-blur' : '';
+                    const hiddenClass = hidden ? 'hidden-news' : '';
+                    const editedText = edited ? '<span class="edited-text">(edited)</span>' : '';
+
+                    return `
+                        <div class="news-item ${pinned ? 'pinned' : ''} ${hiddenClass}">
+                            <h2>${name}</h2>
+                            <p>Author: ${author} ${editedText}</p>
+                            <p class="${nsfwClass}">${content}</p>
+                            <p>Tags: ${tag}, ${tag2}</p>
+                        </div>
+                    `;
+                };
+
+                const newsContainer = document.getElementById('news-container');
+                data.forEach(newsItem => {
+                    const newsHTML = generateNewsHTML(newsItem);
+                    newsContainer.innerHTML += newsHTML;
+                });
+            })
+            .catch(error => console.error('Error fetching news:', error));
+    </script>
+</body>
+</html>
